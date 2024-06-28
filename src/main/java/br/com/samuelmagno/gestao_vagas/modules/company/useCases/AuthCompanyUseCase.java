@@ -10,6 +10,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.auth0.jwt.JWT;
 import javax.naming.AuthenticationException;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.Date;
 
 @Service
@@ -36,6 +38,7 @@ public class AuthCompanyUseCase {
         var token = JWT.create()
                 .withIssuer("javagas")
                 .withSubject(company.getId().toString())
+                .withExpiresAt(Instant.now().plus(Duration.ofHours(2)))
                 .sign(algorithm);
 
         return token;

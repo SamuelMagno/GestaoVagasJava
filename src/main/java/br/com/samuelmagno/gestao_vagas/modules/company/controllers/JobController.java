@@ -19,7 +19,7 @@ public class JobController {
     
     @Autowired
     private CreateJobUseCase useCase;
-    @PostMapping("/")
+    @PostMapping("")
     public ResponseEntity<Object> postMethodName(@Valid @RequestBody JobEntity jobEntity) {
         try {
             var result = this.useCase.execute(jobEntity);
